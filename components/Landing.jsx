@@ -1,8 +1,10 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { Colors } from "react-native/Libraries/NewAppScreen";
+import { useRouter } from "expo-router";
 
 export default function Landing() {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       {/* Waste Bin Image */}
@@ -13,17 +15,26 @@ export default function Landing() {
 
       {/* Buttons for Login */}
       <View>
-        <Text style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => router.push("auth/sign-in")}
+        >
           <Text style={styles.buttonText}>Begin as User</Text>
-        </Text>
+        </TouchableOpacity>
 
-        <Text style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => router.push("auth/sign-in")}
+        >
           <Text style={styles.buttonText}>Begin as Admin</Text>
-        </Text>
+        </TouchableOpacity>
 
-        <Text style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => router.push("auth/sign-in")}
+        >
           <Text style={styles.buttonText}>Begin as Driver</Text>
-        </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
