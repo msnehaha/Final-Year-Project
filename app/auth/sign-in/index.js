@@ -1,5 +1,6 @@
-import { router, useNavigation } from "expo-router";
+import { router, useNavigation, useRouter } from "expo-router";
 import React, { useEffect } from "react";
+import AntDesign from "@expo/vector-icons/AntDesign";
 import {
   View,
   Text,
@@ -11,7 +12,7 @@ import {
 
 export default function SignInScreen() {
   const navigation = useNavigation();
-
+  const router = useRouter();
   useEffect(() => {
     navigation.setOptions({
       headerShown: false,
@@ -19,6 +20,10 @@ export default function SignInScreen() {
   }, []);
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={() => router.back()} style={styles.arrowBtn}>
+        <AntDesign name="arrowleft" size={24} color="black" />
+      </TouchableOpacity>
+
       {/* Welcome Text */}
       <Text style={styles.welcomeText}>Welcome User 👋</Text>
 
@@ -78,6 +83,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 30,
+  },
+  arrowBtn: {
+    position: "absolute",
+    top: 40,
+    left: 20,
   },
   input: {
     width: "100%",
